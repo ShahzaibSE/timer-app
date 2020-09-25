@@ -3,24 +3,57 @@ import React, {useState} from 'react'
 import Button from "@material-ui/core/Button"
 // Assets.
 import "./Timer.css"
+import { interval } from 'rxjs'
 
 const Timer = () => {
-    const [timeLeft, setTimeLeft] = useState<Number>(60)
+    // let [timeLeft, setTimeLeft] = useState(60)
+    let [isOn, setIsOn] = useState(false)
+    let [seconds, setSeconds] = useState(60.0)
+    let [intervalID, setIntervalID] = useState(0)
     // Format time.
     const formatTime = (time:any) => {
         // The largest round integer less than or equal to the result of time divided being by 60.
         const minutes = Math.floor(time / 60);
         
         // Seconds are the remainder of the time divided by 60 (modulus operator)
-        let seconds:any = time % 60;
+        setSeconds(time % 60);
+        let seconds_formated:any = seconds
         
         // If the value of seconds is less than 10, then display seconds with a leading zero
-        if (seconds < 10) {
-            seconds = `0${seconds}`;
+        if (seconds_formated < 10) {
+            seconds_formated = `0${seconds}`;
         }
 
         // The output in MM:SS format
-        return `${minutes}:${seconds}`;
+        return `${minutes}:${seconds_formated}`;
+    }
+    //
+    // Time features.
+    const startTimer = () => {
+        console.log("Start timer")
+        if (isOn === true) {
+            console.log("Can't start timer twice.")
+            return
+        }
+        let startinterval:any  = setInterval(()=>{
+            if (seconds === 0 ){
+                setSeconds(++seconds)
+            }
+        },1000)
+        setIntervalID(startinterval)
+    }
+    //
+    let stopTimer = () => {
+        if(isOn === true){
+            setIsOn(false)
+            clearInterval(intervalID)
+            setSeconds(0.0)
+        }
+    }
+    //
+    let resetTimer = () => {
+        stopTimer()
+        setSeconds(0)
     }
     //
     return (
@@ -31,7 +64,7 @@ const Timer = () => {
             </g>
             </svg>
             <span id="base-timer-label" className="base-timer__label">
-                {formatTime(timeLeft)}
+                {formatTime(seconds)}
             </span>
         </div>
     )
