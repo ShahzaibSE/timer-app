@@ -35,3 +35,30 @@
     /* Sort of an arbitrary number; adjust to your liking */
     font-size: 48px;
   }
+
+  .base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+  }
+
+  .base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+  }
+
+  .base-timer__path-remaining.orange {
+    color: orange;
+  }
+  
+  .base-timer__path-remaining.red {
+    color: red;
+  }
+
+  .base_timer_circle_internal {
+    background: #cb2027ad;
+    border-radius: 190px;
+  }
