@@ -45,6 +45,9 @@ jobs:
       # Install Surge      
       - name: Install Surge
         run: npm install -g surge
+      # Run Tests.
+      - name: Run tests.
+        run: yarn test  
       # Run Surge
       - name: Run Surge
         run: surge ./build/ https://shahzaibnoor-timer-app-bootcamp-2020.surge.sh --token ${{ secrets.shahzaib_timer_pwa_bootcamp_2020 }}  
