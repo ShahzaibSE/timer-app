@@ -3,6 +3,7 @@ import React from 'react'
 import Grid from "@material-ui/core/Grid"
 // Components.
 import Timer from "./../Timer/Timer"
+import TimerButton from "../TimerButton/TimerButton"
 
 const GridComponent = () => {
     return (
@@ -16,6 +17,9 @@ const GridComponent = () => {
              <Grid item sm={12} md={12} lg={12}> 
                 <Timer />
              </Grid> 
+             <Grid item sm={12} md={12} lg={12}>
+               <TimerButton />
+             </Grid>
           </Grid>
         </div>
     )

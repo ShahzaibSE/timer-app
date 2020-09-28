@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, FC} from 'react'
 // Animation utils.
 import {AnimationWrapper} from "react-hover-animation"
 // Assets.
@@ -12,9 +12,8 @@ import "./Timer.css"
 };
 
 const FULL_DASH_ARRAY = 283;
-const TIME_LIMIT = 20;  
 // =============== Timer Component ============= //
-const Timer = () => {
+const Timer: FC = () => {
     // let [timeLeft, setTimeLeft] = useState(60)
     let [isOn, setIsOn] = useState(false)
     let [seconds, setSeconds] = useState(0.0)
