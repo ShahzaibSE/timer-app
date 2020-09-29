@@ -1,8 +1,12 @@
 import React, {useState, FC} from 'react'
+import Grid from "@material-ui/core/Grid"
 // Animation utils.
 import {AnimationWrapper} from "react-hover-animation"
 // Assets.
 import "./Timer.css"
+import {images} from "./../TimerButton/TimerButton.style"
+// Peer component.
+import TimerButton from "./../TimerButton/TimerButton"
 
  // Ring CSS config.,
  const COLOR_CODES = {
@@ -81,33 +85,56 @@ const Timer: FC = () => {
     }
     //
     return (
-        <div className="base-timer">
-            <div>
-            <svg className="base-timer__svg base_timer_circle_internal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g className="base-timer__circle">
-                    <circle className="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-                    <path
-                        id="base-timer-path-remaining"
-                        strokeDasharray="283"
-                        className={`base-timer__path-remaining ${remainingPathColor}`}
-                        d="
-                        M 50, 50
-                        m -45, 0
-                        a 45,45 0 1,0 90,0
-                        a 45,45 0 1,0 -90,0
-                        "
-                    ></path>
-                </g>
-                </svg>
-                    <span id="base-timer-label" className="base-timer__label" style={{fontWeight:"bold"}}>
-                            <AnimationWrapper config={{
-                                transform:{initial:'scale(1)',onHover:'scale(1.5)'},
-                                opacity: {initial:'1',onHover:'1'}
-                                }}>
-                            {formatTime(seconds)}
-                        </AnimationWrapper>
-                    </span>
-            </div>
+        <div>
+           <Grid container spacing={6} style={{ minHeight: '20vh' }}>
+            <Grid item sm={6} md={6} lg={6}>    
+                <Grid container spacing={0} alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '115vh' }}>   
+                    <Grid item sm={6} md={6} lg={6}>     
+                    <div className="base-timer">
+                        <svg className="base-timer__svg base_timer_circle_internal" viewBox="0 0 100 100" 
+                                xmlns="http://www.w3.org/2000/svg">
+                        <g className="base-timer__circle">
+                                <circle className="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                                <path
+                                    id="base-timer-path-remaining"
+                                    strokeDasharray="283"
+                                    className={`base-timer__path-remaining ${remainingPathColor}`}
+                                    d="
+                                    M 50, 50
+                                    m -45, 0
+                                    a 45,45 0 1,0 90,0
+                                    a 45,45 0 1,0 -90,0
+                                    "
+                                ></path>
+                            </g>
+                            </svg>
+                                <span id="base-timer-label" className="base-timer__label" style={{fontWeight:"bold"}}>
+                                        <AnimationWrapper config={{
+                                            transform:{initial:'scale(1)',onHover:'scale(1.5)'},
+                                            opacity: {initial:'1',onHover:'1'}
+                                            }}>
+                                        {formatTime(seconds)}
+                                    </AnimationWrapper>
+                                </span>
+                        </div>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item sm={6} md={6} lg={6}>
+                   <Grid container alignItems="center" justify="center" style={{paddingTop:"14%"}}>
+                        
+                        {images.map((image)=>(
+                            <Grid item sm={12} md={12} lg={12} key={image.url}> 
+                                <TimerButton key={image.url} buttonTitle={image.title} buttonImage={image.url} buttonAction={()=>{console.log("Button clicked")}} 
+                                buttonWidth={image.width}/>
+                            </Grid>    
+                            ))}
+                        
+                    </Grid> 
+                </Grid>
+            </Grid>    
         </div>
     )
 }

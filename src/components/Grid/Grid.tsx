@@ -3,23 +3,26 @@ import React from 'react'
 import Grid from "@material-ui/core/Grid"
 // Components.
 import Timer from "./../Timer/Timer"
-import TimerButton from "../TimerButton/TimerButton"
+import Header from "./../Header/Header"
+// Assets.
+import "./Grid.css"
 
 const GridComponent = () => {
     return (
-        <div>
-          <Grid container
+        <div className="grid_container">
+          {/* <Grid container
                 spacing={0}
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{ minHeight: '70vh' }}>
+                style={{ minHeight: '70vh' }}> */}
+          <Grid container>
+             <Grid item sm={12} md={12} lg={12}>
+               <Header />
+             </Grid>
              <Grid item sm={12} md={12} lg={12}> 
                 <Timer />
              </Grid> 
-             <Grid item sm={12} md={12} lg={12}>
-               <TimerButton />
-             </Grid>
           </Grid>
         </div>
     )

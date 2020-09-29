@@ -5,25 +5,31 @@ import Typography from '@material-ui/core/Typography';
 // Assets.
 import {timerButtonStyles, images} from "./TimerButton.style"
 
-const TimerButton: FC = () => {
+type TimerButtonProps = {
+    buttonTitle: string
+    buttonAction: (e:React.MouseEvent<HTMLButtonElement>) => void
+    buttonImage: string,
+    buttonWidth: string
+}
+
+const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: TimerButtonProps) => {
     const classes = timerButtonStyles()
     console.log(images[0].url)
     return (
         <div className={classes.root}>
-            {images.map((image) => (
                 <ButtonBase
                 focusRipple
-                key={image.title}
+                key={buttonTitle}
                 className={classes.image}
                 focusVisibleClassName={classes.focusVisible}
                 style={{
-                    width: image.width,
+                    width: buttonWidth,
                 }}
                 >
                 <span
                     className={classes.imageSrc}
                     style={{
-                    backgroundImage: `url('${image.url}')`,
+                    backgroundImage: `url('${buttonImage}')`,
                     }}
                 />
                 <span className={classes.imageBackdrop} />
@@ -34,19 +40,19 @@ const TimerButton: FC = () => {
                     color="inherit"
                     className={classes.imageTitle}
                     >
-                    {image.title}
+                    {buttonTitle}
                     <span className={classes.imageMarked} />
                     </Typography>
                 </span>
                 </ButtonBase>
-            ))}
         </div>
     )
 }
 
 TimerButton.propTypes = {
     buttonAction: PropTypes.func.isRequired,
-    buttonValue: PropTypes.string.isRequired,
+    buttonTitle: PropTypes.string.isRequired,
+    buttonImage: PropTypes.string.isRequired,
 }
 
 export default TimerButton
