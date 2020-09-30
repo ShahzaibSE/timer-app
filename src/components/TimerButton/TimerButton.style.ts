@@ -24,7 +24,8 @@ export const timerButtonStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexWrap: 'wrap',
       minWidth: 300,
-      width: '100%'
+      width: '100%',
+      justifyContent:"center"
     },
     image: {
       position: 'relative',

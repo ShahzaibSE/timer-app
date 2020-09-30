@@ -86,11 +86,11 @@ const Timer: FC = () => {
     //
     return (
         <div>
-           <Grid container spacing={1}>
+           <Grid container>
             <Grid item sm={12} md={12} lg={12}>    
                 <Grid container alignItems="center"
-                    justify="center"
-                    style={{ paddingTop:'15vh', paddingBottom:30 }}>   
+                    justify="center" direction="column" spacing={0} style={{ paddingTop: '12vh' }}>   
+
                     <Grid item sm={12} md={12} lg={12}>     
                     <div className="base-timer">
                         <svg className="base-timer__svg base_timer_circle_internal" viewBox="0 0 100 100" 
@@ -123,10 +123,8 @@ const Timer: FC = () => {
                     </Grid>
                 </Grid>
                 <Grid item sm={12} md={12} lg={12}>
-                  <div className="time_buttons_container">  
-                   <Grid container spacing={0} 
-                                    alignItems="center"
-                                    justify="center">
+                  <div>  
+                   <Grid container alignItems="center" justify="center" style={{paddingTop:'7vh'}}>
                          
                         {images.map((image)=>(
                             <Grid item sm={4} md={4} lg={4} key={image.url}> 
@@ -137,7 +135,7 @@ const Timer: FC = () => {
                         
                     </Grid> 
                    </div> 
-                </Grid>
+                 </Grid>
             </Grid>    
         </div>
     )

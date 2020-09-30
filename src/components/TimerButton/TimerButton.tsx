@@ -16,7 +16,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
     const classes = timerButtonStyles()
     console.log(images[0].url)
     return (
-        // <div className={classes.root}>
+        <div className={classes.root}>
                 <ButtonBase
                 focusRipple
                 key={buttonTitle}
@@ -45,7 +45,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
                     </Typography>
                 </span>
                 </ButtonBase>
-        // </div>
+        </div>
     )
 }
 
