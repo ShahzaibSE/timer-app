@@ -9,7 +9,7 @@ import "./Grid.css"
 
 const GridComponent = () => {
     return (
-        <div className="grid_container">
+        <div>
           {/* <Grid container
                 spacing={0}
                 direction="column"

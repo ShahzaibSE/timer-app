@@ -1,9 +1,10 @@
 /* Sets the containers height and width */
 .base-timer {
     position: relative;
-    height: 400px;
-    width: 400px;
-    padding-bottom:20px;
+    height: 350px;
+    width: 350px;
+    /* padding-bottom:20px; */
+    margin:0 auto;
 }
   
 /* Removes SVG styling that would hide the time label */
@@ -22,8 +23,8 @@
     position: absolute;
     
     /* Size should match the parent container */
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     
     /* Keep the label aligned to the top */
     top: 0;
@@ -63,3 +64,38 @@
     background: #cb2027ad;
     border-radius: 190px;
   }
+
+  .time_buttons_container {
+    margin: 0 auto;
+    padding-bottom:50px;
+  }
+
+@media screen and (min-width:320px) and (max-width:480px) {
+  .button_group_container {
+    padding-top:2%
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+  .button_group_container {
+    padding-top:6%
+  }
+}
+
+@media screen and (min-width:1025px) and (max-width: 1200px) {
+  .button_group_container {
+    padding-top:8%
+  }  
+}
+
+@media screen and (min-width: 1205px) and (max-width:1320px) {
+  .button_group_container {
+    padding-top:10%
+  }
+}
+
+@media screen and (min-width:1440px) {
+    .button_group_container {
+      padding-top:14%
+    }
+}

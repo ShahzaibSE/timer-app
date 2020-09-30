@@ -86,12 +86,12 @@ const Timer: FC = () => {
     //
     return (
         <div>
-           <Grid container spacing={6} style={{ minHeight: '20vh' }}>
-            <Grid item sm={6} md={6} lg={6}>    
-                <Grid container spacing={0} alignItems="center"
+           <Grid container spacing={1}>
+            <Grid item sm={12} md={12} lg={12}>    
+                <Grid container alignItems="center"
                     justify="center"
-                    style={{ minHeight: '115vh' }}>   
-                    <Grid item sm={6} md={6} lg={6}>     
+                    style={{ paddingTop:'15vh', paddingBottom:30 }}>   
+                    <Grid item sm={12} md={12} lg={12}>     
                     <div className="base-timer">
                         <svg className="base-timer__svg base_timer_circle_internal" viewBox="0 0 100 100" 
                                 xmlns="http://www.w3.org/2000/svg">
@@ -122,17 +122,21 @@ const Timer: FC = () => {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item sm={6} md={6} lg={6}>
-                   <Grid container alignItems="center" justify="center" style={{paddingTop:"14%"}}>
-                        
+                <Grid item sm={12} md={12} lg={12}>
+                  <div className="time_buttons_container">  
+                   <Grid container spacing={0} 
+                                    alignItems="center"
+                                    justify="center">
+                         
                         {images.map((image)=>(
-                            <Grid item sm={12} md={12} lg={12} key={image.url}> 
+                            <Grid item sm={4} md={4} lg={4} key={image.url}> 
                                 <TimerButton key={image.url} buttonTitle={image.title} buttonImage={image.url} buttonAction={()=>{console.log("Button clicked")}} 
                                 buttonWidth={image.width}/>
                             </Grid>    
                             ))}
                         
                     </Grid> 
+                   </div> 
                 </Grid>
             </Grid>    
         </div>
