@@ -67,6 +67,7 @@ export const timerButtonStyles = makeStyles((theme: Theme) =>
       bottom: 0,
       backgroundSize: 'cover',
       backgroundPosition: 'center 40%',
+      borderRadius:100
     },
     imageBackdrop: {
       position: 'absolute',
@@ -77,6 +78,7 @@ export const timerButtonStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.common.black,
       opacity: 0.4,
       transition: theme.transitions.create('opacity'),
+      borderRadius:100
     },
     imageTitle: {
       position: 'relative',

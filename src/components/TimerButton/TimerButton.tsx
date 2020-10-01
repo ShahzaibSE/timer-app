@@ -23,7 +23,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
                 className={classes.image}
                 focusVisibleClassName={classes.focusVisible}
                 style={{
-                    width: buttonWidth,
+                    width: buttonWidth
                 }}
                 >
                 <span
