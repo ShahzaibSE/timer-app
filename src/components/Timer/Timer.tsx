@@ -83,7 +83,31 @@ const Timer: FC = () => {
         stopTimer()
         setSeconds(0)
     }
-    //
+
+    const renderTimeButton = (image:any) => {
+        if (image.title === "Reset") {
+            let timer_button: any = <Grid item sm={4} md={4} lg={4} key={image.url}> 
+                                        <TimerButton key={image.url} buttonTitle={image.title} 
+                                        buttonImage={image.url} buttonAction={resetTimer} 
+                                        buttonWidth={image.width}/>
+                                    </Grid>
+            return timer_button
+        }else if(image.title === "Stop"){
+            let timer_button: any = <Grid item sm={4} md={4} lg={4} key={image.url}> 
+                                        <TimerButton key={image.url} buttonTitle={image.title} 
+                                        buttonImage={image.url} buttonAction={stopTimer} 
+                                        buttonWidth={image.width}/>
+                                    </Grid>
+            return timer_button
+        } else {
+            let timer_button: any = <Grid item sm={4} md={4} lg={4} key={image.url}> 
+                                        <TimerButton key={image.url} buttonTitle={image.title} 
+                                        buttonImage={image.url} buttonAction={startTimer} 
+                                        buttonWidth={image.width}/>
+                                    </Grid>
+            return timer_button
+        }
+    }
     return (
         <div>
            <Grid container>
@@ -127,10 +151,11 @@ const Timer: FC = () => {
                    <Grid container alignItems="center" justify="center" style={{paddingTop:'7vh'}}>
                          
                         {images.map((image)=>(
-                            <Grid item sm={4} md={4} lg={4} key={image.url}> 
-                                <TimerButton key={image.url} buttonTitle={image.title} buttonImage={image.url} buttonAction={()=>{console.log("Button clicked")}} 
-                                buttonWidth={image.width}/>
-                            </Grid>    
+                            renderTimeButton(image)
+                            // <Grid item sm={4} md={4} lg={4} key={image.url}> 
+                            //     <TimerButton key={image.url} buttonTitle={image.title} buttonImage={image.url} buttonAction={()=>{console.log("Button clicked")}} 
+                            //     buttonWidth={image.width}/>
+                            // </Grid>    
                             ))}
                         
                     </Grid> 

@@ -9,7 +9,7 @@ import {timerButtonStyles, images} from "./TimerButton.style"
 
 type TimerButtonProps = {
     buttonTitle: string
-    buttonAction: (e:React.MouseEvent<HTMLButtonElement>) => void
+    buttonAction: () => void
     buttonImage: string,
     buttonWidth: string
 }
@@ -22,6 +22,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
                                     opacity: {initial:'1',onHover:'1'}}}>
         <div className={classes.root}>
                 <ButtonBase
+                onClick={buttonAction}
                 focusRipple
                 key={buttonTitle}
                 className={classes.image}
