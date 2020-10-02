@@ -10,4 +10,8 @@ describe("Timer", () => {
   it("should render a <div />", () => {
     expect(container.find("div").length).toBeGreaterThanOrEqual(1)
   })
+
+  it("should render three timer buttons <TimerButton />", () => {
+    expect(container.find("TimerButton")).toBeGreaterThanOrEqual(1)
+  })
 })

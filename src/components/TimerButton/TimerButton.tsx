@@ -2,6 +2,8 @@ import React, {FC} from 'react'
 import PropTypes from "prop-types"
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+// Animation utils.
+import {AnimationWrapper} from "react-hover-animation"
 // Assets.
 import {timerButtonStyles, images} from "./TimerButton.style"
 
@@ -16,6 +18,8 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
     const classes = timerButtonStyles()
     console.log(images[0].url)
     return (
+        <AnimationWrapper config={{transform:{initial:'scale(1)',onHover:'scale(1.2)'},
+                                    opacity: {initial:'1',onHover:'1'}}}>
         <div className={classes.root}>
                 <ButtonBase
                 focusRipple
@@ -25,7 +29,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
                 style={{
                     width: buttonWidth
                 }}
-                >
+                >   
                 <span
                     className={classes.imageSrc}
                     style={{
@@ -46,6 +50,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
                 </span>
                 </ButtonBase>
         </div>
+        </AnimationWrapper>
     )
 }
 
