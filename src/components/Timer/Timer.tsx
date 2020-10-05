@@ -63,12 +63,15 @@ const Timer: FC = () => {
             console.log("Can't start timer twice.")
             return
         }
+        setIsOn(true)
         let startinterval:any  = setInterval(()=>{
+            console.log("Timer running.")
             if (seconds === 0 ){
                 setSeconds(++seconds)
             }
         },1000)
         setIntervalID(startinterval)
+        setIsOn(true)
     }
     //
     let stopTimer = () => {
@@ -76,6 +79,7 @@ const Timer: FC = () => {
             setIsOn(false)
             clearInterval(intervalID)
             setSeconds(0.0)
+            console.log("Stop timer")
         }
     }
     //
