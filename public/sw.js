@@ -11,4 +11,4 @@ let urlsToCache = [
     '/static/js/1.chunk.js'
   ];
 
-  console.log("Service Worker started: ",cache_name)
+console.log("Service Worker started: ",cache_name)
