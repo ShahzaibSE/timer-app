@@ -20,8 +20,13 @@ const FULL_DASH_ARRAY = 283;
 const Timer: FC = () => {
     // let [timeLeft, setTimeLeft] = useState(60)
     let [isOn, setIsOn] = useState(false)
-    let [seconds, setSeconds] = useState(0.0)
-    let [intervalID, setIntervalID] = useState(0)
+    // let [seconds, setSeconds] = useState(59)
+    // let [minutes, setMinutes] = useState(25)
+    let [timerIntervalID, setTimerIntervalID] = useState(0)
+    let [timer, setTimer] = useState({minutes:25, seconds:0, isOn:false})
+    let seconds = timer.seconds
+    let minutes = timer.minutes
+    let timerStatus = timer.isOn
     //
     // CSS colors for ring.
     let remainingPathColor = COLOR_CODES.info.color;
@@ -48,7 +53,7 @@ const Timer: FC = () => {
     // Circle decreaser.
     const setCircleDashArray = () => {
         const circleDasharray = `${(
-                    seconds * FULL_DASH_ARRAY
+                    timer.seconds * FULL_DASH_ARRAY
                     ).toFixed(0)} 283`;
         //
         let base_timer_path_remaining_element: any|null = document.getElementById("base-timer-path-remaining");
@@ -56,38 +61,95 @@ const Timer: FC = () => {
       }
     // setCircleDashArray()  
     //
+    const myTimer = () => {
+        if (seconds > 0) {
+            seconds = seconds - 1 
+            timerStatus = true
+            console.log("Seconds updated:",seconds)
+        }
+        if (seconds === 0) {
+            timerStatus = true
+            if (minutes === 0) {
+                clearInterval(timerIntervalID);
+            } else {
+                minutes--
+                seconds = 59
+            }
+            console.log("Updated minutes:",minutes)
+            console.log("Updated seconds:", seconds)
+            console.log("Timer State")
+            console.log(timer)
+        }
+       setTimer({minutes:minutes, seconds:seconds, isOn: timerStatus})
+    }
     // Time features.
     const startTimer = () => {
-        console.log("Start timer")
-        if (isOn === true) {
-            console.log("Can't start timer twice.")
-            return
-        }
-        setIsOn(true)
-        let startinterval:any  = setInterval(()=>{
-            console.log("Timer running.")
-            if (seconds === 0 ){
-                setSeconds(++seconds)
-            }else if (seconds > 0) {
-                setSeconds(++seconds)
-            }
-        },1000)
-        setIntervalID(startinterval)
-        setIsOn(true)
+        let startTimerInterval:any = setInterval(myTimer, 1000)
+        setTimerIntervalID(startTimerInterval)
     }
+    // const startTimer = () => {
+    //     console.log("Start timer")
+    //     if (timer.isOn === true) {
+    //         console.log("Can't start timer twice.")
+    //         return
+    //     }
+    //     // setIsOn(true)
+    //     let startinterval:any  = setInterval(()=>{
+    //         // setSeconds(--seconds)
+    //         // if (seconds === 0 ){
+    //         //     console.log("Starting with 60 seconds.")
+    //         //     // setSeconds(59)
+    //         //         if (minutes === 0) {
+    //         //             clearInterval(intervalID);
+    //         //         } else {
+    //         //             setMinutes(minutes--)
+    //         //             setSeconds(59)
+    //         //             console.log("Updating seconds", seconds)
+    //         //             console.log("Decreasing minutes.")
+    //         //         }
+    //         // }else if (seconds > 0) {
+    //         //     console.log("Decreament in 60 seconds.")
+    //         //     setSeconds(--seconds)
+    //         // }
+
+    //         // console.log("Seconds:",seconds)
+    //         if (seconds > 0) {
+    //             seconds = seconds--
+    //             timerStatus = true
+    //         }
+    //         if (seconds === 0) {
+    //             timerStatus = true
+    //             if (minutes === 0) {
+    //                 clearInterval(timerIntervalID);
+    //             } else {
+    //                 minutes = minutes--
+    //                 seconds = seconds++
+    //             }
+    //             console.log("Timer State")
+    //             console.log(timer)
+    //         }
+    //         setTimer({minutes:minutes, seconds:seconds, isOn: timerStatus, intervalID:startinterval})
+    //     },1000)
+    //     // setTimer({minutes:timer.minutes--, seconds:59, isOn: true, intervalID:startinterval})
+    //     // setIntervalID(startinterval)
+    //     // setIsOn(true)
+    // }
     //
     let stopTimer = () => {
-        if(isOn === true){
-            setIsOn(false)
-            clearInterval(intervalID)
-            setSeconds(0.0)
-            console.log("Stop timer")
+        if(timer.isOn === true){
+            timerStatus = false
+            clearInterval(timerIntervalID)
+            setTimer({minutes:timer.minutes, seconds:timer.seconds, isOn:timerStatus})
+            console.log("Timer State")
+            console.log(timer)
         }
     }
     //
     let resetTimer = () => {
-        setSeconds(0)
-        startTimer()
+        minutes = 25
+        seconds = 0
+        timerStatus = true
+        setTimer({minutes:minutes, seconds:seconds, isOn:timerStatus})
     }
 
     const renderTimeButton = (image:any) => {
@@ -145,7 +207,8 @@ const Timer: FC = () => {
                                             transform:{initial:'scale(1)',onHover:'scale(1.5)'},
                                             opacity: {initial:'1',onHover:'1'}
                                             }}>
-                                        {formatTime(seconds)}
+                                        {/* {formatTime(seconds)} */}
+                                        {timer.minutes}:{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
                                     </AnimationWrapper>
                                 </span>
                         </div>
@@ -157,12 +220,8 @@ const Timer: FC = () => {
                    <Grid container alignItems="center" justify="center" style={{paddingTop:'7vh'}}>
                          
                         {images.map((image)=>(
-                            renderTimeButton(image)
-                            // <Grid item sm={4} md={4} lg={4} key={image.url}> 
-                            //     <TimerButton key={image.url} buttonTitle={image.title} buttonImage={image.url} buttonAction={()=>{console.log("Button clicked")}} 
-                            //     buttonWidth={image.width}/>
-                            // </Grid>    
-                            ))}
+                            renderTimeButton(image)   
+                        ))}
                         
                     </Grid> 
                    </div> 
