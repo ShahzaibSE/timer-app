@@ -68,6 +68,8 @@ const Timer: FC = () => {
             console.log("Timer running.")
             if (seconds === 0 ){
                 setSeconds(++seconds)
+            }else if (seconds > 0) {
+                setSeconds(++seconds)
             }
         },1000)
         setIntervalID(startinterval)
@@ -84,8 +86,8 @@ const Timer: FC = () => {
     }
     //
     let resetTimer = () => {
-        stopTimer()
         setSeconds(0)
+        startTimer()
     }
 
     const renderTimeButton = (image:any) => {
