@@ -136,19 +136,18 @@ const Timer: FC = () => {
     // }
     //
     let stopTimer = () => {
-        if(timer.isOn === true){
-            timerStatus = false
-            clearInterval(timerIntervalID)
-            setTimer({minutes:timer.minutes, seconds:timer.seconds, isOn:timerStatus})
-            console.log("Timer State")
-            console.log(timer)
-        }
+        timerStatus = false
+        clearInterval(timerIntervalID)
+        setTimer({minutes:timer.minutes, seconds:timer.seconds, isOn:timerStatus})
+        console.log("Timer State")
+        console.log(timer)
     }
     //
     let resetTimer = () => {
         minutes = 25
         seconds = 0
         timerStatus = true
+        clearInterval(timerIntervalID)
         setTimer({minutes:minutes, seconds:seconds, isOn:timerStatus})
     }
 
