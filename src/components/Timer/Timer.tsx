@@ -87,54 +87,7 @@ const Timer: FC = () => {
         let startTimerInterval:any = setInterval(myTimer, 1000)
         setTimerIntervalID(startTimerInterval)
     }
-    // const startTimer = () => {
-    //     console.log("Start timer")
-    //     if (timer.isOn === true) {
-    //         console.log("Can't start timer twice.")
-    //         return
-    //     }
-    //     // setIsOn(true)
-    //     let startinterval:any  = setInterval(()=>{
-    //         // setSeconds(--seconds)
-    //         // if (seconds === 0 ){
-    //         //     console.log("Starting with 60 seconds.")
-    //         //     // setSeconds(59)
-    //         //         if (minutes === 0) {
-    //         //             clearInterval(intervalID);
-    //         //         } else {
-    //         //             setMinutes(minutes--)
-    //         //             setSeconds(59)
-    //         //             console.log("Updating seconds", seconds)
-    //         //             console.log("Decreasing minutes.")
-    //         //         }
-    //         // }else if (seconds > 0) {
-    //         //     console.log("Decreament in 60 seconds.")
-    //         //     setSeconds(--seconds)
-    //         // }
-
-    //         // console.log("Seconds:",seconds)
-    //         if (seconds > 0) {
-    //             seconds = seconds--
-    //             timerStatus = true
-    //         }
-    //         if (seconds === 0) {
-    //             timerStatus = true
-    //             if (minutes === 0) {
-    //                 clearInterval(timerIntervalID);
-    //             } else {
-    //                 minutes = minutes--
-    //                 seconds = seconds++
-    //             }
-    //             console.log("Timer State")
-    //             console.log(timer)
-    //         }
-    //         setTimer({minutes:minutes, seconds:seconds, isOn: timerStatus, intervalID:startinterval})
-    //     },1000)
-    //     // setTimer({minutes:timer.minutes--, seconds:59, isOn: true, intervalID:startinterval})
-    //     // setIntervalID(startinterval)
-    //     // setIsOn(true)
-    // }
-    //
+    
     let stopTimer = () => {
         timerStatus = false
         clearInterval(timerIntervalID)
@@ -151,7 +104,7 @@ const Timer: FC = () => {
         setTimer({minutes:minutes, seconds:seconds, isOn:timerStatus})
     }
 
-    const renderTimeButton = (image:any) => {
+    const renderTimerButton = (image:any) => {
         if (image.title === "Reset") {
             let timer_button: any = <Grid item sm={4} md={4} lg={4} key={image.url}> 
                                         <TimerButton key={image.url} buttonTitle={image.title} 
@@ -175,6 +128,13 @@ const Timer: FC = () => {
             return timer_button
         }
     }
+
+    // function test(){
+    //     console.log("Test function for unit testing called.")
+    // }
+
+    // test()
+
     return (
         <div>
            <Grid container>
@@ -219,7 +179,7 @@ const Timer: FC = () => {
                    <Grid container alignItems="center" justify="center" style={{paddingTop:'7vh'}}>
                          
                         {images.map((image)=>(
-                            renderTimeButton(image)   
+                            renderTimerButton(image)   
                         ))}
                         
                     </Grid> 

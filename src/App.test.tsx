@@ -1,5 +1,5 @@
 import React from 'react';
-import {EnzymeAdapter, shallow} from "enzyme"
+import {EnzymeAdapter, shallow, mount} from "enzyme"
 // import {render} from 'enzyme';
 import App from './App';
 import Grid from "./components/Grid/Grid"
@@ -13,8 +13,8 @@ describe('App', () => {
 
   beforeEach(() => container = shallow(<App/>))
 
-  it("checking presence of App component", () => {
-    expect(container).toMatchSnapshot()
+  it("should render a <div />", () => {
+    expect(container.find("div").length).toEqual(1)
   })
 
   it('checking presence of Grid component', () => {

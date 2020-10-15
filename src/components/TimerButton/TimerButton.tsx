@@ -21,7 +21,7 @@ const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: Time
         <AnimationWrapper config={{transform:{initial:'scale(1)',onHover:'scale(1.2)'},
                                     opacity: {initial:'1',onHover:'1'}}}>
         <div className={classes.root}>
-                <ButtonBase
+                <ButtonBase id={buttonTitle}
                 onClick={buttonAction}
                 focusRipple
                 key={buttonTitle}
