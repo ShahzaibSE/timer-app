@@ -29,6 +29,12 @@ describe("Grid", () => {
     // *** //
     // ******** Start Timer ******** //
     // **** //
+    // --- Checking If start timer button exist - UI Snapshot testing --- //
+    it("checking if start button exist", ()=>{
+        container.update()
+        expect(container.find("Start")).toMatchSnapshot()
+    })
+
     it("invoke start timer when start timer button is clicked", ()=>{
         const start_timer_mock_fn = jest.fn() // Mock Start timer function.
         const startTimer = mount(<TimerButton 
@@ -46,6 +52,12 @@ describe("Grid", () => {
     // *** //
     // ******** Stop Timer ******** //
     // **** //
+    // --- Checking If stop timer button exist - UI Snapshot testing --- //
+    it("checking if stop button exist", ()=>{
+        container.update()
+        expect(container.find("Stop")).toMatchSnapshot()
+    })
+
     it("invokes stopTimer when the stop button is clicked", ()=>{
         const stop_timer_mock_fn = jest.fn() // Mock Start timer function.
         const stopTimer = mount(<TimerButton 
@@ -63,6 +75,12 @@ describe("Grid", () => {
     // *** //
     // ******** Reset Timer ******** //
     // **** //
+    // --- Checking if reset timer button exist - UI Snapshot testing --- //
+    it("checking if reset button exist", ()=>{
+        container.update()
+        expect(container.find("Reset")).toMatchSnapshot()
+    })
+
     it("invokes resetTimer when the reset button is clicked", ()=>{
         const reset_timer_mock_fn = jest.fn() // Mock Start timer function.
         const resetTimer = mount(<TimerButton 
@@ -77,10 +95,10 @@ describe("Grid", () => {
         expect(reset_timer_mock_fn).toHaveBeenCalledTimes(1)
     })
 
-    // it('render timer button method should be called to timer buttons', ()=>{
-    //     const spy_timer_btn_renderer = jest.spyOn(container.instance(), 'renderTimerButton')
-
-    //     expect(spy_timer_btn_renderer).toBeInstanceOf(container)
-    // })
+    // Checking if 
+    it("checking if isOn state is changing to true", ()=>{
+        container.update()
+        expect(container.find("Start")).toMatchSnapshot()
+    })
 
 })

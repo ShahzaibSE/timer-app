@@ -16,7 +16,7 @@ type TimerButtonProps = {
 
 const TimerButton = ({buttonTitle, buttonImage, buttonWidth, buttonAction}: TimerButtonProps) => {
     const classes = timerButtonStyles()
-    console.log(images[0].url)
+    // console.log(images[0].url)
     return (
         <AnimationWrapper config={{transform:{initial:'scale(1)',onHover:'scale(1.2)'},
                                     opacity: {initial:'1',onHover:'1'}}}>

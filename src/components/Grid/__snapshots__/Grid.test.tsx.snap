@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid checking if isOn state is changing to true 1`] = `null`;
+
+exports[`Grid checking if isOn state is changing to true 2`] = `null`;
+
+exports[`Grid checking if isOn state is changing to true 3`] = `null`;
+
+exports[`Grid checking if reset button exist 1`] = `null`;
+
+exports[`Grid checking if start button exist 1`] = `null`;
+
+exports[`Grid checking if stop button exist 1`] = `null`;
