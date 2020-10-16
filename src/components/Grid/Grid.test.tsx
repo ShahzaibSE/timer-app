@@ -25,15 +25,23 @@ describe("Grid", () => {
         expect(container.find("TimerButton").length).toBeGreaterThanOrEqual(1)
     })
 
+    // --- Checking If start timer button exist - UI Snapshot testing --- //
+    it("checking if start button exist", ()=>{
+        expect(container.find("#Start")).toMatchSnapshot()
+    })
+    // --- Checking If stop timer button exist - UI Snapshot testing --- //
+    it("checking if stop button exist", ()=>{
+        expect(container.find("#Stop")).toMatchSnapshot()
+    })
+    // --- Checking If reset timer button exist - UI Snapshot testing --- //
+    it("checking if reset button exist", ()=>{
+        expect(container.find("#Reset")).toMatchSnapshot()
+    })
+
     // Testing Start, Stop and Reset functionalities.
     // *** //
     // ******** Start Timer ******** //
     // **** //
-    // --- Checking If start timer button exist - UI Snapshot testing --- //
-    it("checking if start button exist", ()=>{
-        container.update()
-        expect(container.find("Start")).toMatchSnapshot()
-    })
 
     it("invoke start timer when start timer button is clicked", ()=>{
         const start_timer_mock_fn = jest.fn() // Mock Start timer function.
@@ -52,11 +60,6 @@ describe("Grid", () => {
     // *** //
     // ******** Stop Timer ******** //
     // **** //
-    // --- Checking If stop timer button exist - UI Snapshot testing --- //
-    it("checking if stop button exist", ()=>{
-        container.update()
-        expect(container.find("Stop")).toMatchSnapshot()
-    })
 
     it("invokes stopTimer when the stop button is clicked", ()=>{
         const stop_timer_mock_fn = jest.fn() // Mock Start timer function.
@@ -76,10 +79,6 @@ describe("Grid", () => {
     // ******** Reset Timer ******** //
     // **** //
     // --- Checking if reset timer button exist - UI Snapshot testing --- //
-    it("checking if reset button exist", ()=>{
-        container.update()
-        expect(container.find("Reset")).toMatchSnapshot()
-    })
 
     it("invokes resetTimer when the reset button is clicked", ()=>{
         const reset_timer_mock_fn = jest.fn() // Mock Start timer function.
@@ -95,10 +94,21 @@ describe("Grid", () => {
         expect(reset_timer_mock_fn).toHaveBeenCalledTimes(1)
     })
 
-    // Checking if 
-    it("checking if isOn state is changing to true", ()=>{
+    it('should change isOn state true when the start button is clicked', () => {
+        const start_timer_mock_fn = jest.fn() // Mock Start timer function.
+        const handleClick = jest.spyOn(React, 'useState')
+        let timerObj: any
+        // start_timer_mock_fn.mockImplementation(()=>{})
+        const startTimer = mount(<TimerButton 
+                                    buttonTitle={images[0].title} 
+                                    buttonImage={images[0].url} 
+                                    buttonWidth={images[0].width}
+                                    buttonAction={start_timer_mock_fn} />)
         container.update()
-        expect(container.find("Start")).toMatchSnapshot()
-    })
-
+        handleClick.mockImplementation(() => [timerObj, start_timer_mock_fn]);
+        startTimer.find("button").simulate('click')
+        expect(start_timer_mock_fn).toBeTruthy();
+        // container.find("#Start").simulate('click')
+        // expect()
+    });
 })

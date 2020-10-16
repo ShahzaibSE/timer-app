@@ -1,18 +1,24 @@
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
+import start_button_background from "./../../static/images/start-button-background.jpg"
+import stop_time_background from './../../static/images/stop-time-background.jpg'
+import reset_time_background from './../../static/images/reset-button-background.jpg'
 
 export const images = [
   {
-    url: require("./../../static/images/start-button-background.jpg"),
+    // url: require("./../../static/images/start-button-background.jpg"),
+    url: start_button_background,
     title: 'Start',
     width: '40%',
   },
   {
-    url: require('./../../static/images/stop-time-background.jpg'),
+    // url: require('./../../static/images/stop-time-background.jpg'),
+    url: stop_time_background,
     title: 'Stop',
     width: '40%',
   },
   {
-    url: require('./../../static/images/reset-button-background.jpg'),
+    // url: require('./../../static/images/reset-button-background.jpg'),
+    url: reset_time_background,
     title: 'Reset',
     width: '40%',
   },
