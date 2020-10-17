@@ -94,7 +94,7 @@ describe("Grid", () => {
         expect(reset_timer_mock_fn).toHaveBeenCalledTimes(1)
     })
 
-    it('should change isOn state true when the start button is clicked', () => {
+    it('should change timer state object when the start button is clicked', () => {
         const start_timer_mock_fn = jest.fn() // Mock Start timer function.
         const handleClick = jest.spyOn(React, 'useState')
         let timerObj: any
@@ -107,7 +107,46 @@ describe("Grid", () => {
         container.update()
         handleClick.mockImplementation(() => [timerObj, start_timer_mock_fn]);
         startTimer.find("button").simulate('click')
+        expect(handleClick).toHaveBeenCalled()
         expect(start_timer_mock_fn).toBeTruthy();
+        // container.find("#Start").simulate('click')
+        // expect()
+    });
+
+    it('should change timer state object true when the start button is clicked', () => {
+        const stop_timer_mock_fn = jest.fn() // Mock Start timer function.
+        const handleClick = jest.spyOn(React, 'useState')
+        let timerObj: any
+        // start_timer_mock_fn.mockImplementation(()=>{})
+        const stopTimer = mount(<TimerButton 
+                                    buttonTitle={images[1].title} 
+                                    buttonImage={images[1].url} 
+                                    buttonWidth={images[1].width}
+                                    buttonAction={stop_timer_mock_fn} />)
+        container.update()
+        handleClick.mockImplementation(() => [timerObj, stop_timer_mock_fn]);
+        stopTimer.find("button").simulate('click')
+        expect(handleClick).toHaveBeenCalled()
+        expect(stop_timer_mock_fn).toBeTruthy();
+        // container.find("#Start").simulate('click')
+        // expect()
+    });
+
+    it('should change timer state object true when the reset button is clicked', () => {
+        const reset_timer_mock_fn = jest.fn() // Mock Start timer function.
+        const handleClick = jest.spyOn(React, 'useState')
+        let timerObj: any
+        // start_timer_mock_fn.mockImplementation(()=>{})
+        const resetTimer = mount(<TimerButton 
+                                    buttonTitle={images[2].title} 
+                                    buttonImage={images[2].url} 
+                                    buttonWidth={images[2].width}
+                                    buttonAction={reset_timer_mock_fn} />)
+        container.update()
+        handleClick.mockImplementation(() => [timerObj, reset_timer_mock_fn]);
+        resetTimer.find("button").simulate('click')
+        expect(handleClick).toHaveBeenCalled()
+        expect(reset_timer_mock_fn).toBeTruthy();
         // container.find("#Start").simulate('click')
         // expect()
     });
